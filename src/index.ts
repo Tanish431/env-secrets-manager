@@ -3,6 +3,9 @@ dotenv.config()
 
 import express from "express"
 import { seedApiKeys } from "./services/auth"
+import { secretsRouter } from "./routes/secrets";
+import { adminRouter } from "./routes/admin";
+
 
 const app = express()
 app.use(express.json())
@@ -11,14 +14,17 @@ const PORT = process.env.PORT || 3000
 
 async function start() {
     await seedApiKeys()
-
+    
+    app.use("/admin", adminRouter);
+    app.use("/secrets", secretsRouter);
     app.get("/health", (_req, res) => {
-        res.json({status: "ok"})
+        res.json({ status: "ok" })
     })
 
     app.listen(PORT, () => {
         console.log(`Server is listening on port ${PORT}`)
     })
+
 }
 
 start().catch((err) => {

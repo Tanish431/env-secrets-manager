@@ -1,4 +1,4 @@
-export type Environment = "development" | "staging" | "produciton"
+export type Environment = "development" | "staging" | "production"
 export type Scope = "readonly" | "readwrite" | "admin"
 export type Action = "read" | "write" | "delete"
 
@@ -13,7 +13,7 @@ export interface Secret {
     id: string
     key: string
     environment: Environment
-    encrypted_value: string
+    encrypted_val: string
     nonce: string
     auth_tag: string
     created_at: Date

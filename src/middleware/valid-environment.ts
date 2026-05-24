@@ -1,7 +1,7 @@
 import { Request, NextFunction, Response } from "express";
 import { Environment } from "../types";
 
-const VALID_ENVIRONMENTS: Environment[] = ["development", "staging", "produciton"]
+const VALID_ENVIRONMENTS: Environment[] = ["development", "staging", "production"]
 
 export function validateEnvironment(req: Request, res: Response, next: NextFunction): void {
     const env =
